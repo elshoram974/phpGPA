@@ -1,9 +1,9 @@
 <?php
 
-function getNoteById($note_id, $con)
+function getSubjectById($subject_id, $con)
 {
-    $stmt =  $con->prepare("SELECT * FROM `notes` WHERE `notes_id` = ?");
-    $stmt->execute(array($note_id));
+    $stmt =  $con->prepare("SELECT * FROM `subject` WHERE `subject_id` = ?");
+    $stmt->execute(array($subject_id));
     return $stmt;
 }
 function getUserByEmail($email, $con)
@@ -27,10 +27,16 @@ function successStatus($data)
 {
     echo json_encode(array('status' => 'success', 'data' => $data));
 }
-function filterRequest($variable)
+function filterRequest($variable, $canBeNull = false)
 {
-    $post = htmlspecialchars(strip_tags($_POST[$variable]));
-    if (empty($post)) throw new Exception("this '$variable' post is empty", 1);
+    $post = $_POST[$variable];
+    if (empty($post)) { //|| strtolower($post) == 'null'
+        if ($canBeNull) return null;
+        throw new Exception("this '$variable' post is empty", 1);
+    }
+
+
+    $post = htmlspecialchars(strip_tags($post));
 
     return $post;
 }

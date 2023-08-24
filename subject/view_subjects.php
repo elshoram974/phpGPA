@@ -2,27 +2,29 @@
 include '../connect.php';
 
 try {
+
     global $user_id;
-    $user_id        = filterRequest('user_id');
+
+    $user_id = filterRequest('user_id');
 } catch (\Throwable $th) {
     failureStatus('error when get post');
     return;
 }
 
 
+
 $stmt = getUserById($user_id, $con);
 
 if ($stmt->rowCount() > 0) {
 
-    $stmt = $con->prepare("SELECT * FROM `notes` WHERE `note_user` = ? ");
+    $stmt = $con->prepare("SELECT * FROM `subject` WHERE `subject_user` = ?");
     try {
         $stmt->execute(array($user_id));
 
         if ($stmt->rowCount() > 0) {
 
-            $notes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            successStatus($notes);
+            $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            successStatus($subjects);
         } else {
             failureStatus('unknown error');
         }
