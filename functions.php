@@ -60,3 +60,44 @@ function getMyDate()
     date_default_timezone_set('Africa/Cairo');
     return date('d-m-y h:i:s', strtotime('+1 hour'));
 }
+
+define('MB', 1048576);
+function uploadImage($request, $email, $path = 'uploaded_images/')
+{
+    $image = isset($_FILES[$request]) ? $_FILES[$request] : null;
+    if (!empty($image)) {
+        $name      = $image['name']; // IMG_20220827_131611.jpg
+        $full_path = $image['full_path']; //  IMG_20220827_131611.jpg
+        $type      = $image['type'];  // image/jpeg
+        $tmp_name  = $image['tmp_name']; //C:\xampp\tmp\php11BE.tmp
+        $error     = $image['error']; // 0
+        $size      = $image['size']; // 1290266
+
+        $allowExt = array("jpg", "jpeg", "png");
+        $strToArray = explode('.', $name);
+        $ext = strtolower(end($strToArray));
+
+        if ($size > 10 * MB) {
+            throw new Exception("image size is big = " . $size / MB . "MB .. should be less than or equal 10 MB", 1);
+        } elseif (!in_array($ext, $allowExt)) {
+            throw new Exception("this extension '$ext' not photo", 1);
+        } elseif ($error > 0) {
+            throw new Exception("upload image error = " . $error, 1);
+        } else {
+            $name = "$email.$ext";
+            move_uploaded_file($tmp_name, $path . $name);
+            return $name;
+        }
+    } else {
+        return null;
+    }
+}
+function deleteImage($path, $imageName)
+{
+    $fileName = $path . $imageName;
+    if (file_exists($fileName)) {
+        unlink($fileName);
+    } else {
+        return null;
+    }
+}
