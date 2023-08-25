@@ -1,5 +1,11 @@
 <?php
 
+function getSharedSubjectByRemoteId($remote_id, $con)
+{
+    $stmt =  $con->prepare("SELECT * FROM `shared_subjects` WHERE `remote_id` = ?");
+    $stmt->execute(array($remote_id));
+    return $stmt;
+}
 function getSubjectById($subject_id, $con)
 {
     $stmt =  $con->prepare("SELECT * FROM `subject` WHERE `subject_id` = ?");
@@ -19,15 +25,15 @@ function getUserById($user_id, $con)
     return $stmt;
 }
 
-function failureStatus($message)
+function failureStatus($message): void
 {
     echo json_encode(array('status' => 'failure', 'message' => $message));
 }
-function successStatus($data)
+function successStatus($data): void
 {
     echo json_encode(array('status' => 'success', 'data' => $data));
 }
-function filterRequest($variable, $canBeNull = false)
+function filterRequest($variable, $canBeNull = false): string
 {
     $post = $_POST[$variable];
     if (empty($post)) { //|| strtolower($post) == 'null'
@@ -42,12 +48,12 @@ function filterRequest($variable, $canBeNull = false)
 }
 
 
-function sendMail($to, $title, $body)
+function sendMail($to, $title, $body): void
 {
     $header = "From: support@mrecode.com" . "\n" . "CC: mre974@gmail.com";
     mail($to, $title, $body, $header);
 }
-function sendCode($email, $rand)
+function sendCode($email, $rand): void
 {
     $to    = $email;
     $title = "Please verify your email";
@@ -55,14 +61,14 @@ function sendCode($email, $rand)
     sendMail($to, $title, $body);
 }
 
-function getMyDate()
+function getMyDate(): string
 {
     date_default_timezone_set('Africa/Cairo');
     return date('d-m-y h:i:s', strtotime('+1 hour'));
 }
 
 define('MB', 1048576);
-function uploadImage($request, $email, $path = 'uploaded_images/')
+function uploadImage($request, $email, $path = 'uploaded_images/'): string|null
 {
     $image = isset($_FILES[$request]) ? $_FILES[$request] : null;
     if (!empty($image)) {
@@ -92,38 +98,66 @@ function uploadImage($request, $email, $path = 'uploaded_images/')
         return null;
     }
 }
-function deleteImage($imageName, $path = 'uploaded_images/')
+function deleteImage($imageName, $path = 'uploaded_images/'): void
 {
-    $fileName = $path . $imageName;
-    if (file_exists($fileName)) {
-        unlink($fileName);
-    } else {
-        return null;
+    $fileName = $imageName == null ? null : $path . $imageName;
+    try {
+        if (file_exists($fileName)) unlink($fileName);
+    } catch (\Throwable $th) {
     }
 }
-function deleteSharedSubjects($user_id, $wantEcho)
+// function deleteSharedSubjects($user_id, $wantEcho)
+// {
+//     global $con;
+//     $stmt = getUserById($user_id, $con);
+
+//     if ($stmt->rowCount() > 0) {
+
+
+//         try {
+//             $stmt =  $con->prepare("UPDATE `users` SET `user_sharedId`= NULL WHERE `user_id` = ?");
+//             $stmt->execute(array($user_id));
+
+//             $stmt = $con->prepare("DELETE FROM `shared_subjects` where `subject_user` = ?");
+//             $stmt->execute(array($user_id));
+
+//             if ($stmt->rowCount() > 0) {
+//                 $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//                 if ($wantEcho) successStatus(array('user_id' => $user_id, 'status' => 'deleted'));
+//             } else {
+//                 if ($wantEcho) failureStatus(array('message' => 'no subject found'));
+//             }
+//         } catch (\Throwable $th) {
+//             if ($wantEcho) failureStatus($th->getMessage());
+//         }
+//     } else {
+//         if ($wantEcho) failureStatus('email not exist');
+//     }
+// }
+
+
+function getUserSharedId($userStmt): int
 {
     global $con;
-    $stmt = getUserById($user_id, $con);
+    $tempUser = $userStmt->fetch(PDO::FETCH_ASSOC);
+    $myRand = $tempUser['user_sharedId'];
 
-    if ($stmt->rowCount() > 0) {
 
+    if ($myRand == null) {
+        while (true) {
 
-        try {
-            $stmt = $con->prepare("DELETE FROM `shared_subjects` where `subject_user` = ?");
-            $stmt->execute(array($user_id));
+            $myRand = rand(1000000000, 9999999999);
 
-            if ($stmt->rowCount() > 0) {
-                $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $tempStmt = $con->prepare("SELECT `user_sharedId` FROM `users` WHERE `user_sharedId` = ? ");
+            $tempStmt->execute(array($myRand));
 
-                if ($wantEcho) successStatus(array('user_id' => $user_id, 'status' => 'deleted'));
-            } else {
-                if ($wantEcho) failureStatus(array('message' => 'no subject found'));
+            if ($tempStmt->rowCount() == 0) {
+                $stmt =  $con->prepare("UPDATE `users` SET `user_sharedId`=?  WHERE `user_id` = ?");
+                $stmt->execute(array($myRand,  $tempUser['user_id']));
+                break;
             }
-        } catch (\Throwable $th) {
-            if ($wantEcho) failureStatus($th->getMessage());
         }
-    } else {
-        if ($wantEcho) failureStatus('email not exist');
     }
+    return $myRand;
 }

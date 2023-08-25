@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2023 at 09:11 AM
+-- Generation Time: Aug 25, 2023 at 02:29 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -62,7 +62,8 @@ CREATE TABLE `shared_subjects` (
   `subject_isCalculated` tinyint(4) NOT NULL DEFAULT 1,
   `subject_semester` int(11) NOT NULL,
   `subject_year` int(11) NOT NULL,
-  `subject_user` int(11) NOT NULL
+  `subject_user` int(11) NOT NULL,
+  `fromUser` char(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -112,7 +113,8 @@ CREATE TABLE `users` (
   `verified_code` int(11) DEFAULT NULL,
   `is_verified` tinyint(4) NOT NULL DEFAULT 0,
   `user_create_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `last_login` datetime DEFAULT NULL
+  `last_login` datetime DEFAULT NULL,
+  `user_sharedId` char(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -140,7 +142,8 @@ ALTER TABLE `subject`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `user_sharedId` (`user_sharedId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -150,19 +153,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `shared_subjects`
 --
 ALTER TABLE `shared_subjects`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Constraints for dumped tables

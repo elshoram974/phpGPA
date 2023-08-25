@@ -1,14 +1,41 @@
 <?php
 include '../../connect.php';
 
+// try {
+
+//     global $user_id;
+
+//     $user_id = filterRequest('user_id');
+// } catch (\Throwable $th) {
+//     failureStatus('error when get post');
+//     return;
+// }
+
+// deleteSharedSubjects($user_id, true);
+
+
 try {
 
-    global $user_id;
+    global $remote_id;
 
-    $user_id = filterRequest('user_id');
+    $user_sharedId = filterRequest('user_sharedId');
 } catch (\Throwable $th) {
     failureStatus('error when get post');
     return;
 }
 
-deleteSharedSubjects($user_id, true);
+try {
+    $stmt = $con->prepare("SELECT * from `shared_subjects` where `fromUser` = ?");
+    $stmt->execute(array($user_sharedId));
+
+    if ($stmt->rowCount() > 0) {
+        $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+        successStatus(array('user_sharedId' => $user_sharedId, 'shared_subjects' => $subjects));
+    } else {
+        failureStatus('no subject found');
+    }
+} catch (\Throwable $th) {
+    failureStatus($th->getMessage());
+}

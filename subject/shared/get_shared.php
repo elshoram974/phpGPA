@@ -3,35 +3,26 @@ include '../../connect.php';
 
 try {
 
-    global $shared_user_id;
+    global $user_sharedId;
 
-    $shared_user_id = filterRequest('shared_user_id');
+    $user_sharedId = filterRequest('user_sharedId');
 } catch (\Throwable $th) {
     failureStatus('error when get post');
     return;
 }
 
+try {
+    $stmt = $con->prepare("SELECT * from `shared_subjects` where `fromUser` = ?");
+    $stmt->execute(array($user_sharedId));
 
-$stmt = getUserById($shared_user_id, $con);
-
-if ($stmt->rowCount() > 0) {
-
-
-    try {
-        $stmt = $con->prepare("SELECT * from `shared_subjects` where `subject_user` = ?");
-        $stmt->execute(array($shared_user_id));
-
-        if ($stmt->rowCount() > 0) {
-            $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() > 0) {
+        $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-            successStatus(array('shared_user_id' => $shared_user_id, 'shared_subjects' => $subjects));
-        } else {
-            failureStatus(array('message' => 'no subject found'));
-        }
-    } catch (\Throwable $th) {
-        failureStatus($th->getMessage());
+        successStatus(array('user_sharedId' => $user_sharedId, 'shared_subjects' => $subjects));
+    } else {
+        failureStatus('no subject found');
     }
-} else {
-    failureStatus('email not exist');
+} catch (\Throwable $th) {
+    failureStatus($th->getMessage());
 }
