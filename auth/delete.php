@@ -19,7 +19,7 @@ if ($stmt->rowCount() > 0) {
 
     $imageName = $stmt->fetch(PDO::FETCH_ASSOC)['user_image'];
 
-    deleteImage('uploaded_images/', $imageName);
+    deleteImage($imageName);
 
 
     $stmt =  $con->prepare("DELETE FROM `users` WHERE `user_id` = ?");

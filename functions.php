@@ -92,12 +92,38 @@ function uploadImage($request, $email, $path = 'uploaded_images/')
         return null;
     }
 }
-function deleteImage($path, $imageName)
+function deleteImage($imageName, $path = 'uploaded_images/')
 {
     $fileName = $path . $imageName;
     if (file_exists($fileName)) {
         unlink($fileName);
     } else {
         return null;
+    }
+}
+function deleteSharedSubjects($user_id, $wantEcho)
+{
+    global $con;
+    $stmt = getUserById($user_id, $con);
+
+    if ($stmt->rowCount() > 0) {
+
+
+        try {
+            $stmt = $con->prepare("DELETE FROM `shared_subjects` where `subject_user` = ?");
+            $stmt->execute(array($user_id));
+
+            if ($stmt->rowCount() > 0) {
+                $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                if ($wantEcho) successStatus(array('user_id' => $user_id, 'status' => 'deleted'));
+            } else {
+                if ($wantEcho) failureStatus(array('message' => 'no subject found'));
+            }
+        } catch (\Throwable $th) {
+            if ($wantEcho) failureStatus($th->getMessage());
+        }
+    } else {
+        if ($wantEcho) failureStatus('email not exist');
     }
 }
