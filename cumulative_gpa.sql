@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 25, 2023 at 02:29 PM
+-- Generation Time: Aug 25, 2023 at 10:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,12 +28,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appinfo` (
+  `id` int(11) NOT NULL,
+  `appId` char(50) NOT NULL,
   `buildVersion` int(11) NOT NULL,
   `version` char(10) NOT NULL,
-  `updateDialogMessageEN` varchar(1000) NOT NULL,
-  `updateDialogMessageAR` varchar(1000) NOT NULL,
-  `whenPressUpdate` varchar(1000) NOT NULL
+  `messageTitleEn` char(50) DEFAULT NULL,
+  `messageTitleAr` char(50) DEFAULT NULL,
+  `updateDialogMessageEN` varchar(1000) DEFAULT NULL,
+  `updateDialogMessageAR` varchar(1000) DEFAULT NULL,
+  `whenPressUpdate` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `appinfo`
+--
+
+INSERT INTO `appinfo` (`id`, `appId`, `buildVersion`, `version`, `messageTitleEn`, `messageTitleAr`, `updateDialogMessageEN`, `updateDialogMessageAR`, `whenPressUpdate`) VALUES
+(1, 'com.mre.cumulative', 7, '1.1.5', 'new app', 'تطبيق جديد', 'Please download the new application. This app is no longer supported. Additionally, the new application has many features, such as saving subjects in a database, simple sharing it with a link, and more features.', 'من فضلك انزل التطبيق الجديد، هذا التطبيق لم يعد مدعوم \r\nكما ان التطبيق الجديد به العديد من المزايا كحفظ المواد في قاعدة بيانات ومشاركة ماتريده بالرابط وغيره ', 'golink');
 
 -- --------------------------------------------------------
 
@@ -44,6 +55,8 @@ CREATE TABLE `appinfo` (
 CREATE TABLE `shared_subjects` (
   `subject_id` int(11) NOT NULL,
   `remote_id` int(11) DEFAULT NULL,
+  `subject_user` int(11) NOT NULL,
+  `fromUser` char(255) NOT NULL,
   `subject_nameEn` char(35) NOT NULL,
   `subject_nameAr` char(35) DEFAULT NULL,
   `subject_note` text DEFAULT NULL,
@@ -61,9 +74,7 @@ CREATE TABLE `shared_subjects` (
   `subject_hours` int(11) NOT NULL,
   `subject_isCalculated` tinyint(4) NOT NULL DEFAULT 1,
   `subject_semester` int(11) NOT NULL,
-  `subject_year` int(11) NOT NULL,
-  `subject_user` int(11) NOT NULL,
-  `fromUser` char(255) NOT NULL
+  `subject_year` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -75,6 +86,7 @@ CREATE TABLE `shared_subjects` (
 CREATE TABLE `subject` (
   `subject_id` int(11) NOT NULL,
   `remote_id` int(11) DEFAULT NULL,
+  `subject_user` int(11) NOT NULL,
   `subject_nameEn` char(35) NOT NULL,
   `subject_nameAr` char(35) DEFAULT NULL,
   `subject_note` text DEFAULT NULL,
@@ -93,8 +105,7 @@ CREATE TABLE `subject` (
   `subject_isCalculated` tinyint(4) NOT NULL DEFAULT 1,
   `subject_lastEdit` datetime DEFAULT NULL,
   `subject_semester` int(11) NOT NULL,
-  `subject_year` int(11) NOT NULL,
-  `subject_user` int(11) NOT NULL
+  `subject_year` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -105,9 +116,9 @@ CREATE TABLE `subject` (
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `first_name` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `last_name` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `user_image` varchar(255) DEFAULT NULL,
   `verified_code` int(11) DEFAULT NULL,
@@ -120,6 +131,13 @@ CREATE TABLE `users` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `appinfo`
+--
+ALTER TABLE `appinfo`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `app_id` (`appId`);
 
 --
 -- Indexes for table `shared_subjects`
@@ -135,7 +153,7 @@ ALTER TABLE `shared_subjects`
 ALTER TABLE `subject`
   ADD PRIMARY KEY (`subject_id`),
   ADD UNIQUE KEY `remote_id` (`remote_id`),
-  ADD KEY `subject_ibfk_1` (`subject_user`);
+  ADD KEY `subject_user` (`subject_user`);
 
 --
 -- Indexes for table `users`
@@ -150,22 +168,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `appinfo`
+--
+ALTER TABLE `appinfo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `shared_subjects`
 --
 ALTER TABLE `shared_subjects`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables

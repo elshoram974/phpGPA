@@ -70,10 +70,10 @@ if ($stmt->rowCount() > 0) {
             $stmt = $con->prepare("SELECT * from `subject` where `subject_id` = ?");
             $stmt->execute(array($subject_id));
 
-            $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            successStatus($subjects);
+            $subject = $stmt->fetch(PDO::FETCH_ASSOC);
+            successStatus($subject);
         } else {
-            failureStatus('unknown error');
+            failureStatus('there is no change to edit');
         }
     } catch (\Throwable $th) {
         failureStatus($th->getMessage());

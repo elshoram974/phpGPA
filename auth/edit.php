@@ -38,7 +38,7 @@ if ($stmt->rowCount() > 0) {
 
             successStatus($user);
         } else {
-            failureStatus('unknown error');
+            failureStatus('there is no change to edit');
         }
     } catch (\Throwable $th) {
         failureStatus($th->getMessage());

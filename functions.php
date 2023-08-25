@@ -33,7 +33,7 @@ function successStatus($data): void
 {
     echo json_encode(array('status' => 'success', 'data' => $data));
 }
-function filterRequest($variable, $canBeNull = false): string
+function filterRequest($variable, $canBeNull = false): string | null
 {
     $post = $_POST[$variable];
     if (empty($post)) { //|| strtolower($post) == 'null'
@@ -100,41 +100,12 @@ function uploadImage($request, $email, $path = 'uploaded_images/'): string|null
 }
 function deleteImage($imageName, $path = 'uploaded_images/'): void
 {
-    $fileName = $imageName == null ? null : $path . $imageName;
+    $fileName = ($imageName == null ? null : $path . $imageName);
     try {
         if (file_exists($fileName)) unlink($fileName);
     } catch (\Throwable $th) {
     }
 }
-// function deleteSharedSubjects($user_id, $wantEcho)
-// {
-//     global $con;
-//     $stmt = getUserById($user_id, $con);
-
-//     if ($stmt->rowCount() > 0) {
-
-
-//         try {
-//             $stmt =  $con->prepare("UPDATE `users` SET `user_sharedId`= NULL WHERE `user_id` = ?");
-//             $stmt->execute(array($user_id));
-
-//             $stmt = $con->prepare("DELETE FROM `shared_subjects` where `subject_user` = ?");
-//             $stmt->execute(array($user_id));
-
-//             if ($stmt->rowCount() > 0) {
-//                 $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-//                 if ($wantEcho) successStatus(array('user_id' => $user_id, 'status' => 'deleted'));
-//             } else {
-//                 if ($wantEcho) failureStatus(array('message' => 'no subject found'));
-//             }
-//         } catch (\Throwable $th) {
-//             if ($wantEcho) failureStatus($th->getMessage());
-//         }
-//     } else {
-//         if ($wantEcho) failureStatus('email not exist');
-//     }
-// }
 
 
 function getUserSharedId($userStmt): int
