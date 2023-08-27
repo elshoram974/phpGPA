@@ -48,16 +48,34 @@ function filterRequest($variable, $canBeNull = false): string | null
 }
 
 
-function sendMail($to, $title, $body): void
-{
-    $header = "From: support@mrecode.com" . "\n" . "CC: mre974@gmail.com";
-    mail($to, $title, $body, $header);
-}
-function sendCode($email, $rand): void
-{
-    $to    = $email;
-    $title = "Please verify your email";
-    $body   = "your code is $rand \nplease use the code to verify your email \nif you not registered in note app .. please ignore this message";
+function sendMail($to, $title, $body): void 
+{ 
+    // تحديد أن البريد الإلكتروني يحتوي على نص HTML
+        
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
+     $headers .= "From: My GPA+ <support@mrecode.com>" . "\r\n" . "CC: mre974@gmail.com\r\n"; 
+            
+    
+    mail($to, $title, $body, $headers); 
+} 
+
+function sendCode($title,$email, $rand): void 
+{ 
+    $to = $email; 
+    $title = "Verify email"; 
+
+    // تنسيق النص
+    $body = "<div style='text-align: start;'>
+                Your code is <span style='font-weight: bold; font-size: larger;'>$rand</span>
+                <br>
+                Please use the code to $title.
+                <br>
+                If you're not registered in the My GPA+ App, please ignore this message.
+            </div>";
+
+
+    // إرسال البريد الإلكتروني
     sendMail($to, $title, $body);
 }
 
