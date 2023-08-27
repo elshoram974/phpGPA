@@ -48,22 +48,21 @@ function filterRequest($variable, $canBeNull = false): string | null
 }
 
 
-function sendMail($to, $title, $body): void 
-{ 
+function sendMail($to, $title, $body): void
+{
     // تحديد أن البريد الإلكتروني يحتوي على نص HTML
-        
+
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-     $headers .= "From: My GPA+ <support@mrecode.com>" . "\r\n" . "CC: mre974@gmail.com\r\n"; 
-            
-    
-    mail($to, $title, $body, $headers); 
-} 
+    $headers .= "From: My GPA+ <support@mrecode.com>" . "\r\n" . "CC: mre974@gmail.com\r\n";
 
-function sendCode($title,$email, $rand): void 
-{ 
-    $to = $email; 
-    $title = "Verify email"; 
+
+    mail($to, $title, $body, $headers);
+}
+
+function sendCode($title, $email, $rand): void
+{
+    $to = $email;
 
     // تنسيق النص
     $body = "<div style='text-align: start;'>

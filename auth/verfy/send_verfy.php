@@ -22,7 +22,7 @@ if ($stmt->rowCount() > 0) {
     $stmt = getUserByEmail($email, $con);
 
 
-    sendCode($email, $rand);
+    sendCode("Verify email", $email, $rand);
     successStatus($stmt->fetch(PDO::FETCH_ASSOC));
 } else {
     failureStatus('email not exist');
