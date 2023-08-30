@@ -5,7 +5,8 @@ try {
 
     global $user_sharedId;
 
-    $user_sharedId = filterRequest('user_sharedId');
+    $user_sharedId = $_GET['user_sharedId'];
+    // $user_sharedId = filterRequest('user_sharedId');
 } catch (\Throwable $th) {
     failureStatus('error when get post');
     return;

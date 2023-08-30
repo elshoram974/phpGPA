@@ -2,13 +2,9 @@
 
 include 'functions.php';
 
-// $dbname = "id21176483_mrecodenote";
-// $user = "id21176483_mrecode";
-// $pass = "seawaYS1#";
-
-$dbname = "cumulative_gpa";
-$user = "root";
-$pass = null;
+$dbname = "gpa_pro";
+$user = "mrecode";
+$pass = "seawaYS1#";
 
 
 
