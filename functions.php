@@ -27,7 +27,7 @@ function getUserById($user_id, $con)
 
 function failureStatus($message): void
 {
-    echo json_encode(array('status' => 'failure', 'message' => $message));
+    echo json_encode(array('status' => 'failure', 'data' => array('message' => $message)));
 }
 function successStatus($data): void
 {
