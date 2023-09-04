@@ -28,7 +28,7 @@ if ($stmt->rowCount() > 0) {
 
         if ($stmt->rowCount() > 0) {
             $stmt = getUserByEmail($email, $con);
-            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             successStatus($user);
         } else {

@@ -78,11 +78,11 @@ function sendCode($title, $email, $rand): void
     sendMail($to, $title, $body);
 }
 
-function getMyDate(): string
-{
-    date_default_timezone_set('Africa/Cairo');
-    return date('d-m-y h:i:s', strtotime('+1 hour'));
-}
+// function getMyDate(): string
+// {
+//     date_default_timezone_set('Africa/Cairo');
+//     return date('d-m-y h:i:s', strtotime('+1 hour'));
+// }
 
 define('MB', 1048576);
 function uploadImage($request, $email, $path = 'uploaded_images/'): string|null

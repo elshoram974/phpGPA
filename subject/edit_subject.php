@@ -59,11 +59,10 @@ if ($stmt->rowCount() > 0) {
 
 
     $stmt = $con->prepare(
-        "UPDATE `subject` SET `remote_id`=`subject_id`,`subject_nameEn`=?,`subject_nameAr`=?,`subject_note`=?,`subject_myMidDegree`=?,`subject_myYearWorkDegree`=?,`subject_myPracticalDegree`=?,`subject_myFinalDegree`=?,`subject_maxMidDegree`=?,`subject_maxYearWorkDegree`=?,`subject_maxPracticalDegree`=?,`subject_maxFinalDegree`=?,`subject_degree`=?,`subject_maxDegree`=?,`subject_gpa`=?,`subject_hours`=?,`subject_isCalculated`=?, `subject_lastEdit` = ?,`subject_semester`=?,`subject_year`=? WHERE `subject_id` = ?"
+        "UPDATE `subject` SET `remote_id`=`subject_id`,`subject_nameEn`=?,`subject_nameAr`=?,`subject_note`=?,`subject_myMidDegree`=?,`subject_myYearWorkDegree`=?,`subject_myPracticalDegree`=?,`subject_myFinalDegree`=?,`subject_maxMidDegree`=?,`subject_maxYearWorkDegree`=?,`subject_maxPracticalDegree`=?,`subject_maxFinalDegree`=?,`subject_degree`=?,`subject_maxDegree`=?,`subject_gpa`=?,`subject_hours`=?,`subject_isCalculated`=?, `subject_lastEdit` = CURRENT_TIMESTAMP,`subject_semester`=?,`subject_year`=? WHERE `subject_id` = ?"
     );
     try {
-        $last_edit = getMyDate();
-        $stmt->execute(array($subject_nameEn, $subject_nameAr, $subject_note, $subject_myMidDegree, $subject_myYearWorkDegree, $subject_myPracticalDegree, $subject_myFinalDegree, $subject_maxMidDegree, $subject_maxYearWorkDegree, $subject_maxPracticalDegree, $subject_maxFinalDegree, $subject_degree, $subject_maxDegree, $subject_gpa, $subject_hours, $subject_isCalculated, $last_edit, $subject_semester, $subject_year, $subject_id));
+        $stmt->execute(array($subject_nameEn, $subject_nameAr, $subject_note, $subject_myMidDegree, $subject_myYearWorkDegree, $subject_myPracticalDegree, $subject_myFinalDegree, $subject_maxMidDegree, $subject_maxYearWorkDegree, $subject_maxPracticalDegree, $subject_maxFinalDegree, $subject_degree, $subject_maxDegree, $subject_gpa, $subject_hours, $subject_isCalculated, $subject_semester, $subject_year, $subject_id));
 
 
         if ($stmt->rowCount() > 0) {

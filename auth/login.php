@@ -22,9 +22,8 @@ if ($stmt->rowCount() > 0) {
         } else {
 
             // to save login date
-            $date = getMyDate();
-            $stmt =  $con->prepare("UPDATE `users` SET `last_login`= ? WHERE `email` = ? AND `password` = ?");
-            $stmt->execute(array($date, $email, $password));
+            $stmt =  $con->prepare("UPDATE `users` SET `last_login`= CURRENT_TIMESTAMP WHERE `email` = ? AND `password` = ?");
+            $stmt->execute(array($email, $password));
             // -----------------
 
             $stmt = getUserByEmail($email, $con);
