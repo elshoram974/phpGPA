@@ -4,7 +4,9 @@ include '../../connect.php';
 
 try {
     global $email;
+    global $title;
     $email = filterRequest('email');
+    $title = filterRequest('title' ,true) ?? 'GPA Pro';
 } catch (\Throwable $th) {
     failureStatus('error when get post');
     return;
@@ -22,7 +24,7 @@ if ($stmt->rowCount() > 0) {
     $stmt = getUserByEmail($email, $con);
 
 
-    sendCode("Verify email", $email, $rand);
+    sendCode($title, $email, $rand);
     successStatus($stmt->fetch(PDO::FETCH_ASSOC));
 } else {
     failureStatus('email not exist');

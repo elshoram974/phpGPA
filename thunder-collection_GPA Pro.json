@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "GPA Pro",
-    "dateExported": "2023-09-02T16:51:49.517Z",
+    "dateExported": "2023-09-05T18:45:59.138Z",
     "version": "1.1",
     "folders": [
         {
@@ -43,7 +43,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-08-23T17:35:38.836Z",
-            "modified": "2023-08-31T17:07:10.885Z",
+            "modified": "2023-09-04T11:52:59.577Z",
             "headers": [],
             "params": [],
             "body": {
@@ -52,11 +52,11 @@
                 "form": [
                     {
                         "name": "email",
-                        "value": "elshoram974@gmail.com"
+                        "value": "riyadm2001@gmail.com"
                     },
                     {
                         "name": "password",
-                        "value": "aaaaaa"
+                        "value": "12345678"
                     }
                 ]
             },
@@ -71,7 +71,7 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2023-08-23T17:37:16.911Z",
-            "modified": "2023-08-30T04:58:29.625Z",
+            "modified": "2023-09-03T22:46:23.700Z",
             "headers": [],
             "params": [],
             "body": {
@@ -88,7 +88,7 @@
                     },
                     {
                         "name": "email",
-                        "value": "elshoram974@gmail.com"
+                        "value": "riyadm2002@gmail.com"
                     },
                     {
                         "name": "password",
@@ -107,7 +107,7 @@
             "method": "POST",
             "sortNum": 35000,
             "created": "2023-08-24T18:33:17.968Z",
-            "modified": "2023-08-30T04:59:28.663Z",
+            "modified": "2023-09-05T18:38:43.618Z",
             "headers": [],
             "params": [],
             "body": {
@@ -124,17 +124,18 @@
                     },
                     {
                         "name": "email",
-                        "value": "haad@gmail.com"
+                        "value": "riyadm2001@gmail.com"
                     },
                     {
                         "name": "password",
-                        "value": "aaaaaa"
+                        "value": "123456789"
                     }
                 ],
                 "files": [
                     {
                         "name": "image",
-                        "value": "d:\\Privets\\Pictures\\Pic\\2021\\IMG_20201226_080355.jpg"
+                        "value": "c:\\Users\\elsho\\OneDrive\\Pictures\\img2.jpg",
+                        "isDisabled": true
                     }
                 ]
             },
@@ -173,7 +174,7 @@
             "method": "POST",
             "sortNum": 50000,
             "created": "2023-08-23T17:43:46.342Z",
-            "modified": "2023-09-02T16:46:02.249Z",
+            "modified": "2023-09-03T22:27:16.200Z",
             "headers": [],
             "params": [],
             "body": {
@@ -186,7 +187,7 @@
                     },
                     {
                         "name": "verified_code",
-                        "value": "723973"
+                        "value": "45"
                     }
                 ]
             },
@@ -201,7 +202,7 @@
             "method": "POST",
             "sortNum": 60000,
             "created": "2023-08-23T17:45:19.645Z",
-            "modified": "2023-09-02T16:46:56.324Z",
+            "modified": "2023-09-05T18:08:29.383Z",
             "headers": [],
             "params": [],
             "body": {
@@ -211,6 +212,10 @@
                     {
                         "name": "email",
                         "value": "elshoram974@gmail.com"
+                    },
+                    {
+                        "name": "title",
+                        "value": "hi mohmmed"
                     }
                 ]
             },
@@ -225,7 +230,7 @@
             "method": "POST",
             "sortNum": 70000,
             "created": "2023-08-23T20:21:20.481Z",
-            "modified": "2023-08-30T05:33:53.223Z",
+            "modified": "2023-09-05T17:52:43.710Z",
             "headers": [],
             "params": [],
             "body": {
@@ -234,11 +239,11 @@
                 "form": [
                     {
                         "name": "subject_nameEn",
-                        "value": "eag"
+                        "value": "1"
                     },
                     {
                         "name": "subject_nameAr",
-                        "value": "SAewf"
+                        "value": "1"
                     },
                     {
                         "name": "subject_note",
@@ -298,15 +303,15 @@
                     },
                     {
                         "name": "subject_semester",
-                        "value": "asdasd"
+                        "value": "second_semester"
                     },
                     {
                         "name": "subject_year",
-                        "value": "asdasd"
+                        "value": "preparatory_year"
                     },
                     {
                         "name": "subject_user",
-                        "value": "42"
+                        "value": "55"
                     }
                 ]
             },
@@ -321,7 +326,7 @@
             "method": "POST",
             "sortNum": 80000,
             "created": "2023-08-24T17:49:41.422Z",
-            "modified": "2023-08-30T04:59:58.482Z",
+            "modified": "2023-09-05T17:54:22.630Z",
             "headers": [],
             "params": [],
             "body": {
@@ -330,11 +335,11 @@
                 "form": [
                     {
                         "name": "subject_nameEn",
-                        "value": "bbbbbbbbbbbbbbb"
+                        "value": "3"
                     },
                     {
                         "name": "subject_nameAr",
-                        "value": "bbbb"
+                        "value": "3"
                     },
                     {
                         "name": "subject_note",
@@ -394,15 +399,15 @@
                     },
                     {
                         "name": "subject_semester",
-                        "value": "asdasd"
+                        "value": "summer_semester"
                     },
                     {
                         "name": "subject_year",
-                        "value": "asdasd"
+                        "value": "preparatory_year"
                     },
                     {
                         "name": "subject_id",
-                        "value": "82"
+                        "value": "91"
                     }
                 ]
             },
@@ -433,6 +438,38 @@
             "tests": []
         },
         {
+            "_id": "534c690b-e331-4dee-bd5a-0d422c4736cd",
+            "colId": "aeadd066-0b61-476f-9721-445270d4b556",
+            "containerId": "1db02dae-344f-4e48-b89c-c17916132e64",
+            "name": "delete_semester",
+            "url": "https://mrecode.com/gpapro/api/subject/delete_semester.php",
+            "method": "POST",
+            "sortNum": 95000,
+            "created": "2023-09-05T17:43:20.902Z",
+            "modified": "2023-09-05T18:00:41.021Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "subject_semester",
+                        "value": "summer_semester"
+                    },
+                    {
+                        "name": "subject_year",
+                        "value": "preparatory_year"
+                    },
+                    {
+                        "name": "subject_user",
+                        "value": "55"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
             "_id": "c54fd3fd-b272-4c4d-afb2-7334dc064515",
             "colId": "aeadd066-0b61-476f-9721-445270d4b556",
             "containerId": "1db02dae-344f-4e48-b89c-c17916132e64",
@@ -441,7 +478,7 @@
             "method": "POST",
             "sortNum": 100000,
             "created": "2023-08-24T18:14:54.760Z",
-            "modified": "2023-08-30T05:00:09.796Z",
+            "modified": "2023-09-05T17:38:43.931Z",
             "headers": [],
             "params": [],
             "body": {
@@ -450,7 +487,7 @@
                 "form": [
                     {
                         "name": "user_id",
-                        "value": "014"
+                        "value": "82"
                     }
                 ]
             },
@@ -521,7 +558,7 @@
             "method": "GET",
             "sortNum": 120000,
             "created": "2023-08-25T06:34:45.035Z",
-            "modified": "2023-08-30T05:34:58.799Z",
+            "modified": "2023-09-02T20:19:24.950Z",
             "headers": [],
             "params": [
                 {
@@ -530,16 +567,6 @@
                     "isPath": false
                 }
             ],
-            "body": {
-                "type": "formdata",
-                "raw": "",
-                "form": [
-                    {
-                        "name": "user_sharedId",
-                        "value": "4946729692"
-                    }
-                ]
-            },
             "tests": []
         },
         {

@@ -100,10 +100,12 @@ function uploadImage($request, $email, $path = 'uploaded_images/'): string|null
         $strToArray = explode('.', $name);
         $ext = strtolower(end($strToArray));
 
-        if ($size > 10 * MB) {
-            throw new Exception("image size is big = " . $size / MB . "MB .. should be less than or equal 10 MB", 1);
+        $photoMaxSize = 4;
+
+        if ($size > $photoMaxSize * MB) {
+            throw new Exception("image size is big = " . $size / MB . "MB .. should be less than or equal $photoMaxSize MB", 1);
         } elseif (!in_array($ext, $allowExt)) {
-            throw new Exception("this extension '$ext' not photo", 1);
+            throw new Exception("this extension '$ext' not to photo", 1);
         } elseif ($error > 0) {
             throw new Exception("upload image error = " . $error, 1);
         } else {
@@ -112,6 +114,12 @@ function uploadImage($request, $email, $path = 'uploaded_images/'): string|null
             return $name;
         }
     } else {
+        global $con;
+
+        $stmt = getUserByEmail($email, $con);
+        $imageName = $stmt->fetch(PDO::FETCH_ASSOC)['user_image'];
+
+        deleteImage($imageName, $path);
         return null;
     }
 }
