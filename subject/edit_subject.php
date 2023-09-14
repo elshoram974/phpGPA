@@ -70,7 +70,7 @@ if ($stmt->rowCount() > 0) {
             $stmt->execute(array($subject_id));
 
             $subject = $stmt->fetch(PDO::FETCH_ASSOC);
-            successStatus($subject);
+            successStatus(array('shared_subjects' => $subject));
         } else {
             failureStatus('there is no change to edit');
         }

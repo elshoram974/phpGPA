@@ -27,7 +27,7 @@ if ($stmt->rowCount() > 0) {
         if ($stmt->rowCount() > 0) {
 
             $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            successStatus($subjects);
+            successStatus(array('shared_subjects' => $subjects));
         } else {
             failureStatus('subject is not exist');
         }

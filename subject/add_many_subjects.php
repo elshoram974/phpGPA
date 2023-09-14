@@ -33,7 +33,7 @@ if ($stmt->rowCount() > 0) {
             $stmt->execute(array($subject_user));
 
             $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            successStatus($subjects);
+            successStatus(array('shared_subjects' => $subjects));
         } else {
             failureStatus('unknown error, subjects are not added');
         }

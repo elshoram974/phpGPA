@@ -24,7 +24,7 @@ if ($stmt->rowCount() > 0) {
         if ($stmt->rowCount() > 0) {
 
             $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            successStatus(array('all_subjects' => $subjects));
+            successStatus(array('shared_subjects' => $subjects));
         } else {
             failureStatus('user does not have subjects');
         }
