@@ -29,7 +29,7 @@ if ($stmt->rowCount() > 0) {
             $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
             successStatus($subjects);
         } else {
-            failureStatus('unknown error');
+            failureStatus('subject is not exist');
         }
     } catch (\Throwable $th) {
         failureStatus($th->getMessage());

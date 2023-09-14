@@ -26,7 +26,7 @@ if ($stmt->rowCount() > 0) {
             $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
             successStatus($subjects);
         } else {
-            failureStatus('unknown error');
+            failureStatus('unknown error, user do not have subjects');
         }
     } catch (\Throwable $th) {
         failureStatus($th->getMessage());
