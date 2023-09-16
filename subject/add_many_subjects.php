@@ -38,7 +38,7 @@ if ($stmt->rowCount() > 0) {
             failureStatus('unknown error, subjects are not added');
         }
     } catch (\Throwable $th) {
-        failureStatus($subjects_SQLCode);
+        // failureStatus($subjects_SQLCode);
         failureStatus($th->getMessage());
     }
 } else {
