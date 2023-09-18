@@ -72,7 +72,7 @@ if ($stmt->rowCount() > 0) {
             $subject = $stmt->fetch(PDO::FETCH_ASSOC);
             successStatus(array('shared_subjects' => $subject));
         } else {
-            failureStatus('there is no change to edit');
+            failureStatus('there is no change to update');
         }
     } catch (\Throwable $th) {
         failureStatus($th->getMessage());

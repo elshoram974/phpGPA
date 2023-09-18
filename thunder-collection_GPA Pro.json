@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "GPA Pro",
-    "dateExported": "2023-09-14T08:39:07.262Z",
+    "dateExported": "2023-09-18T09:50:52.508Z",
     "version": "1.1",
     "folders": [
         {
@@ -221,102 +221,6 @@
             "tests": []
         },
         {
-            "_id": "73ec6c4b-46d9-4722-8913-825841ca2233",
-            "colId": "aeadd066-0b61-476f-9721-445270d4b556",
-            "containerId": "1db02dae-344f-4e48-b89c-c17916132e64",
-            "name": "add_subject",
-            "url": "https://mrecode.com/gpapro/api/subject/add_subject.php",
-            "method": "POST",
-            "sortNum": 70000,
-            "created": "2023-08-23T20:21:20.481Z",
-            "modified": "2023-09-05T17:52:43.710Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "formdata",
-                "raw": "",
-                "form": [
-                    {
-                        "name": "subject_nameEn",
-                        "value": "1"
-                    },
-                    {
-                        "name": "subject_nameAr",
-                        "value": "1"
-                    },
-                    {
-                        "name": "subject_note",
-                        "value": ""
-                    },
-                    {
-                        "name": "subject_myMidDegree",
-                        "value": "ad"
-                    },
-                    {
-                        "name": "subject_myYearWorkDegree",
-                        "value": "1"
-                    },
-                    {
-                        "name": "subject_myPracticalDegree",
-                        "value": "null"
-                    },
-                    {
-                        "name": "subject_myFinalDegree",
-                        "value": "null"
-                    },
-                    {
-                        "name": "subject_maxMidDegree",
-                        "value": "null"
-                    },
-                    {
-                        "name": "subject_maxYearWorkDegree",
-                        "value": "null"
-                    },
-                    {
-                        "name": "subject_maxPracticalDegree",
-                        "value": "null"
-                    },
-                    {
-                        "name": "subject_maxFinalDegree",
-                        "value": "null"
-                    },
-                    {
-                        "name": "subject_degree",
-                        "value": "75"
-                    },
-                    {
-                        "name": "subject_maxDegree",
-                        "value": "100"
-                    },
-                    {
-                        "name": "subject_gpa",
-                        "value": "1"
-                    },
-                    {
-                        "name": "subject_hours",
-                        "value": "5"
-                    },
-                    {
-                        "name": "subject_isCalculated",
-                        "value": "1"
-                    },
-                    {
-                        "name": "subject_semester",
-                        "value": "second_semester"
-                    },
-                    {
-                        "name": "subject_year",
-                        "value": "preparatory_year"
-                    },
-                    {
-                        "name": "subject_user",
-                        "value": "55"
-                    }
-                ]
-            },
-            "tests": []
-        },
-        {
             "_id": "5ae5ee60-be0d-409b-9d13-62cab223def2",
             "colId": "aeadd066-0b61-476f-9721-445270d4b556",
             "containerId": "1db02dae-344f-4e48-b89c-c17916132e64",
@@ -413,15 +317,15 @@
             "tests": []
         },
         {
-            "_id": "6d578161-6631-429c-be09-3d84ce350707",
+            "_id": "054bb113-d595-4aac-8967-0cefb1184001",
             "colId": "aeadd066-0b61-476f-9721-445270d4b556",
             "containerId": "1db02dae-344f-4e48-b89c-c17916132e64",
-            "name": "delete_subject",
-            "url": "https://mrecode.com/gpapro/api/subject/delete_subject.php",
+            "name": "change_calc_subjects",
+            "url": "https://mrecode.com/gpapro/api/subject/change_calc_subjects.php",
             "method": "POST",
-            "sortNum": 90000,
-            "created": "2023-08-24T17:45:41.503Z",
-            "modified": "2023-08-30T05:00:05.321Z",
+            "sortNum": 88750,
+            "created": "2023-09-18T09:27:28.301Z",
+            "modified": "2023-09-18T09:48:03.662Z",
             "headers": [],
             "params": [],
             "body": {
@@ -429,40 +333,16 @@
                 "raw": "",
                 "form": [
                     {
-                        "name": "subject_id",
-                        "value": "81"
-                    }
-                ]
-            },
-            "tests": []
-        },
-        {
-            "_id": "534c690b-e331-4dee-bd5a-0d422c4736cd",
-            "colId": "aeadd066-0b61-476f-9721-445270d4b556",
-            "containerId": "1db02dae-344f-4e48-b89c-c17916132e64",
-            "name": "delete_semester",
-            "url": "https://mrecode.com/gpapro/api/subject/delete_semester.php",
-            "method": "POST",
-            "sortNum": 95000,
-            "created": "2023-09-05T17:43:20.902Z",
-            "modified": "2023-09-05T18:00:41.021Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "formdata",
-                "raw": "",
-                "form": [
-                    {
-                        "name": "subject_semester",
-                        "value": "summer_semester"
+                        "name": "make_them_calculated",
+                        "value": "1"
                     },
                     {
-                        "name": "subject_year",
-                        "value": "preparatory_year"
+                        "name": "where_code",
+                        "value": "\"`remote_id`=83 OR `remote_id` = 88 OR `remote_id` = 179\""
                     },
                     {
-                        "name": "subject_user",
-                        "value": "55"
+                        "name": "user_id",
+                        "value": "58"
                     }
                 ]
             },
@@ -477,7 +357,7 @@
             "method": "POST",
             "sortNum": 97500,
             "created": "2023-09-14T06:51:42.794Z",
-            "modified": "2023-09-14T08:28:36.034Z",
+            "modified": "2023-09-16T18:43:53.369Z",
             "headers": [],
             "params": [],
             "body": {
@@ -486,10 +366,38 @@
                 "form": [
                     {
                         "name": "subjects_SQLCode",
-                        "value": "\"(58,'First Subject','أول مادة',NULL,19,9,50,NULL, 20,10,60, 78,80,NULL,3,1,'first_semester','first_year'),(58,'Second Subject','ثاني مادة',NULL,19,9,50,NULL, 20,10,60, 78,80,NULL,3,1,'first_semester','first_year')\""
+                        "value": "\"('58''1 Subject','1 مادة',NULL,19,9,50,NULL, 20,10,60, 78,80,NULL,3,1,'summer_semester','first_year'),(58,'fifth Subject','خامس مادة',NULL,19,9,50,NULL, 20,10,60, 78,80,NULL,3,1,'summer_semester','first_year')\""
                     },
                     {
                         "name": "subject_user",
+                        "value": "58"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "534c690b-e331-4dee-bd5a-0d422c4736cd",
+            "colId": "aeadd066-0b61-476f-9721-445270d4b556",
+            "containerId": "1db02dae-344f-4e48-b89c-c17916132e64",
+            "name": "delete_many_subjects",
+            "url": "https://mrecode.com/gpapro/api/subject/delete_many_subjects.php",
+            "method": "POST",
+            "sortNum": 98750,
+            "created": "2023-09-05T17:43:20.902Z",
+            "modified": "2023-09-18T09:05:51.204Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "where_code",
+                        "value": "\"`remote_id`=83 OR `remote_id` = 88 OR `remote_id` = 179\""
+                    },
+                    {
+                        "name": "user_id",
                         "value": "58"
                     }
                 ]
@@ -505,7 +413,7 @@
             "method": "POST",
             "sortNum": 100000,
             "created": "2023-08-24T18:14:54.760Z",
-            "modified": "2023-09-05T17:38:43.931Z",
+            "modified": "2023-09-14T10:36:06.803Z",
             "headers": [],
             "params": [],
             "body": {
@@ -514,7 +422,7 @@
                 "form": [
                     {
                         "name": "user_id",
-                        "value": "82"
+                        "value": "58"
                     }
                 ]
             },
