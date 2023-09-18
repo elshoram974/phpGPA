@@ -69,7 +69,7 @@ if ($stmt->rowCount() > 0) {
             $stmt = $con->prepare("SELECT * from `subject` where `subject_id` = ?");
             $stmt->execute(array($subject_id));
 
-            $subject = $stmt->fetch(PDO::FETCH_ASSOC);
+            $subject = $stmt->fetchAll(PDO::FETCH_ASSOC);
             successStatus(array('shared_subjects' => $subject));
         } else {
             failureStatus('there is no change to update');
