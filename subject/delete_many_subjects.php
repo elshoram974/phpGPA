@@ -18,16 +18,25 @@ try {
 $stmt = getUserById($user_id, $con);
 
 if ($stmt->rowCount() > 0) {
-
-    $stmt = $con->prepare("DELETE FROM `subject` WHERE $where_code");
+    $stmt =  $con->prepare("SELECT * FROM `subject` WHERE $where_code");
     try {
-        $stmt->execute(array());
-
+        $stmt->execute();
         if ($stmt->rowCount() > 0) {
-            $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            successStatus(array('shared_subjects' => $subjects));
+
+            $stmt = $con->prepare("DELETE FROM `subject` WHERE $where_code");
+            try {
+                $stmt->execute();
+
+                if ($stmt->rowCount() > 0) {
+                    successStatus(array('message' => 'Deleted successfully'));
+                } else {
+                    failureStatus('subjects are not deleted, may it is already deleted');
+                }
+            } catch (\Throwable $th) {
+                failureStatus($th->getMessage());
+            }
         } else {
-            failureStatus('unknown error, subjects are not deleted, may it is already deleted');
+            failureStatus('subjects not exist with this user');
         }
     } catch (\Throwable $th) {
         failureStatus($th->getMessage());
