@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "GPA Pro",
-    "dateExported": "2023-09-18T09:50:52.508Z",
+    "dateExported": "2023-09-18T19:53:14.215Z",
     "version": "1.1",
     "folders": [
         {
@@ -229,7 +229,7 @@
             "method": "POST",
             "sortNum": 80000,
             "created": "2023-08-24T17:49:41.422Z",
-            "modified": "2023-09-05T17:54:22.630Z",
+            "modified": "2023-09-18T17:12:47.724Z",
             "headers": [],
             "params": [],
             "body": {
@@ -238,11 +238,11 @@
                 "form": [
                     {
                         "name": "subject_nameEn",
-                        "value": "3"
+                        "value": "212"
                     },
                     {
                         "name": "subject_nameAr",
-                        "value": "3"
+                        "value": "212"
                     },
                     {
                         "name": "subject_note",
@@ -290,7 +290,7 @@
                     },
                     {
                         "name": "subject_gpa",
-                        "value": ""
+                        "value": "null"
                     },
                     {
                         "name": "subject_hours",
@@ -310,7 +310,7 @@
                     },
                     {
                         "name": "subject_id",
-                        "value": "91"
+                        "value": "89"
                     }
                 ]
             },
@@ -325,7 +325,7 @@
             "method": "POST",
             "sortNum": 88750,
             "created": "2023-09-18T09:27:28.301Z",
-            "modified": "2023-09-18T09:48:03.662Z",
+            "modified": "2023-09-18T11:36:23.374Z",
             "headers": [],
             "params": [],
             "body": {
@@ -334,11 +334,11 @@
                 "form": [
                     {
                         "name": "make_them_calculated",
-                        "value": "1"
+                        "value": "0"
                     },
                     {
                         "name": "where_code",
-                        "value": "\"`remote_id`=83 OR `remote_id` = 88 OR `remote_id` = 179\""
+                        "value": "\"`remote_id`=2101 OR `remote_id` = 1211 OR `remote_id` = 1245\""
                     },
                     {
                         "name": "user_id",
@@ -385,7 +385,7 @@
             "method": "POST",
             "sortNum": 98750,
             "created": "2023-09-05T17:43:20.902Z",
-            "modified": "2023-09-18T09:05:51.204Z",
+            "modified": "2023-09-18T11:52:40.518Z",
             "headers": [],
             "params": [],
             "body": {
@@ -394,7 +394,7 @@
                 "form": [
                     {
                         "name": "where_code",
-                        "value": "\"`remote_id`=83 OR `remote_id` = 88 OR `remote_id` = 179\""
+                        "value": "\"`remote_id`=176 OR `remote_id` = 1211 OR `remote_id` = 1245\""
                     },
                     {
                         "name": "user_id",
