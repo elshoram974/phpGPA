@@ -42,7 +42,7 @@ try {
     $subject_maxDegree          = filterRequest('subject_maxDegree');
     $subject_gpa                = filterRequest('subject_gpa', true);
     $subject_hours              = filterRequest('subject_hours');
-    $subject_isCalculated       = filterRequest('subject_isCalculated', true) ?? 1;
+    $subject_isCalculated       = filterRequest('subject_isCalculated', true);
     $subject_semester           = filterRequest('subject_semester');
     $subject_year               = filterRequest('subject_year');
     // $subject_user               = filterRequest('subject_user');
