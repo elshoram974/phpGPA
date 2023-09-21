@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "GPA Pro",
-    "dateExported": "2023-09-18T19:53:14.215Z",
+    "dateExported": "2023-09-21T17:48:08.148Z",
     "version": "1.1",
     "folders": [
         {
@@ -102,12 +102,12 @@
             "_id": "2dc69d06-f60a-432c-b9c4-0cdc3311f37e",
             "colId": "aeadd066-0b61-476f-9721-445270d4b556",
             "containerId": "40f6bc5b-de17-4a55-a41a-8188735be881",
-            "name": "edit",
-            "url": "https://mrecode.com/gpapro/api/auth/edit.php",
+            "name": "edit_name",
+            "url": "https://mrecode.com/gpapro/api/auth/edit_name.php",
             "method": "POST",
             "sortNum": 35000,
             "created": "2023-08-24T18:33:17.968Z",
-            "modified": "2023-09-09T22:15:26.874Z",
+            "modified": "2023-09-21T13:10:43.666Z",
             "headers": [],
             "params": [],
             "body": {
@@ -120,21 +120,71 @@
                     },
                     {
                         "name": "last_name",
-                        "value": "Riyad"
+                        "value": "El Shora"
                     },
+                    {
+                        "name": "email",
+                        "value": "mohammedriyad54@gmail.com"
+                    }
+                ],
+                "files": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9a8c445b-f253-4082-be1f-6ea8571197b1",
+            "colId": "aeadd066-0b61-476f-9721-445270d4b556",
+            "containerId": "40f6bc5b-de17-4a55-a41a-8188735be881",
+            "name": "change_password",
+            "url": "https://mrecode.com/gpapro/api/auth/change_password.php",
+            "method": "POST",
+            "sortNum": 37500,
+            "created": "2023-09-21T13:09:47.438Z",
+            "modified": "2023-09-21T13:17:18.333Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
                     {
                         "name": "email",
                         "value": "mohammedriyad54@gmail.com"
                     },
                     {
-                        "name": "password",
+                        "name": "newPassword",
                         "value": "12345678"
+                    }
+                ],
+                "files": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "f2cfd386-523e-4d25-844d-9beea58a6b7e",
+            "colId": "aeadd066-0b61-476f-9721-445270d4b556",
+            "containerId": "40f6bc5b-de17-4a55-a41a-8188735be881",
+            "name": "change_photo",
+            "url": "https://mrecode.com/gpapro/api/auth/change_photo.php",
+            "method": "POST",
+            "sortNum": 38750,
+            "created": "2023-09-21T13:09:50.247Z",
+            "modified": "2023-09-21T16:15:12.627Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "mohammedriyad54@gmail.com"
                     }
                 ],
                 "files": [
                     {
                         "name": "image",
-                        "value": "d:\\Privets\\Pictures\\Pic\\2022\\64qrcz.jpg"
+                        "value": "d:\\Privets\\Pictures\\Pic\\2022\\B612_20220426_151156_321.jpg"
                     }
                 ]
             },
