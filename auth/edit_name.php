@@ -7,12 +7,10 @@ try {
     global $first_name;
     global $last_name;
     global $email;
-    global $password;
 
     $first_name = filterRequest('first_name');
     $last_name  = filterRequest('last_name');
     $email      = filterRequest('email');
-    $password   = sha1(filterRequest('password'));
 } catch (\Throwable $th) {
     failureStatus('error when get post');
     return;
@@ -26,19 +24,17 @@ if ($stmt->rowCount() > 0) {
 
 
 
-    $stmt =  $con->prepare("UPDATE `users` SET `first_name`=?,`last_name`=?,`password`=?,`user_image`=? WHERE `email` = ?");
+    $stmt =  $con->prepare("UPDATE `users` SET `first_name`=?,`last_name`=? WHERE `email` = ?");
     try {
-        $image = uploadImage('image', $email);
-
-        $stmt->execute(array($first_name, $last_name, $password, $image, $email));
+        $stmt->execute(array($first_name, $last_name, $email));
 
         if ($stmt->rowCount() > 0) {
             $stmt = getUserByEmail($email, $con);
-            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             successStatus($user);
         } else {
-            failureStatus('there is no change to edit');
+            failureStatus('there is no change to save');
         }
     } catch (\Throwable $th) {
         failureStatus($th->getMessage());

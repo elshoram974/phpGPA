@@ -100,7 +100,7 @@ function uploadImage($request, $email, $path = 'uploaded_images/'): string|null
         $strToArray = explode('.', $name);
         $ext = strtolower(end($strToArray));
 
-        $photoMaxSize = 4;
+        $photoMaxSize = 10;
 
         if ($size > $photoMaxSize * MB) {
             throw new Exception("image size is big = " . $size / MB . "MB .. should be less than or equal $photoMaxSize MB", 1);
@@ -113,15 +113,10 @@ function uploadImage($request, $email, $path = 'uploaded_images/'): string|null
             move_uploaded_file($tmp_name, $path . $name);
             return $name;
         }
-    } else {
-        global $con;
-
-        $stmt = getUserByEmail($email, $con);
-        $imageName = $stmt->fetch(PDO::FETCH_ASSOC)['user_image'];
-
-        deleteImage($imageName, $path);
-        return null;
     }
+
+
+    return null;
 }
 function deleteImage($imageName, $path = 'uploaded_images/'): void
 {
