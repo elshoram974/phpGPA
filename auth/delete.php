@@ -25,7 +25,7 @@ if ($stmt->rowCount() > 0) {
     $stmt =  $con->prepare("DELETE FROM `users` WHERE `user_id` = ?");
     $stmt->execute(array($user_id));
 
-    successStatus('deleted');
+    successStatus(array('message' => 'deleted'));
 } else {
     failureStatus('email not exist');
 }
