@@ -152,3 +152,44 @@ function getUserSharedId($userStmt): int
     }
     return $myRand;
 }
+
+
+function deleteSharedSubjects($user_id, $where, $wantEcho)
+{
+    global $con;
+    $stmt = getUserById($user_id, $con);
+
+    if ($stmt->rowCount() > 0) {
+
+
+        try {
+            $stmt = $con->prepare("DELETE FROM `shared_subjects` where `subject_user` = ? AND ($where)");
+            $stmt->execute(array($user_id));
+
+            if ($stmt->rowCount() > 0) {
+                // $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                // search if no else shared subjects
+                $stmt = $con->prepare("SELECT * from `shared_subjects` where `subject_user` = ?");
+                $stmt->execute(array($user_id));
+
+                if ($stmt->rowCount() == 0) {
+                    $stmt =  $con->prepare("UPDATE `users` SET `user_sharedId`= NULL WHERE `user_id` = ?");
+                    $stmt->execute(array($user_id));
+                }
+                // --------------------------------
+
+
+
+
+                if ($wantEcho) successStatus(array('user_id' => $user_id, 'status' => 'deleted'));
+            } else {
+                if ($wantEcho) failureStatus('no subject found');
+            }
+        } catch (\Throwable $th) {
+            if ($wantEcho) failureStatus($th->getMessage());
+        }
+    } else {
+        if ($wantEcho) failureStatus('email not exist');
+    }
+}
