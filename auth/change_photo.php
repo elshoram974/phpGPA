@@ -5,10 +5,8 @@ include '../connect.php';
 
 try {
     global $email;
-    global $image;
 
     $email = filterRequest('email');
-    $image = uploadImage('image', $email);
 } catch (\Throwable $th) {
     failureStatus($th->getMessage());
     return;
@@ -20,14 +18,20 @@ $stmt = getUserByEmail($email, $con);
 
 if ($stmt->rowCount() > 0) {
 
+    $imageName = $stmt->fetch(PDO::FETCH_ASSOC)['user_image'];
+    deleteImage($imageName);
+
+    $image = uploadImage('image', $email);
+
 
     if ($image != null) {
         $stmt =  $con->prepare("UPDATE `users` SET `user_image`= NULL WHERE `email` = ?");
         $stmt->execute(array($email));
-    } else {
-        $imageName = $stmt->fetch(PDO::FETCH_ASSOC)['user_image'];
-        deleteImage($imageName);
-    }
+    } 
+    // else {
+    //     $imageName = $stmt->fetch(PDO::FETCH_ASSOC)['user_image'];
+    //     deleteImage($imageName);
+    // }
 
     $stmt =  $con->prepare("UPDATE `users` SET `user_image`=? WHERE `email` = ?");
     try {
