@@ -1,0 +1,746 @@
+{
+	"info": {
+		"_postman_id": "9a6247cd-335e-4ea4-bb43-1d5bb5759a44",
+		"name": "GPA PRO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29286079"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "verify",
+					"item": [
+						{
+							"name": "send_verify",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "elshoram974@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "asasas",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mrecode.com/gpapro/api/auth/verify/send_verify.php",
+									"protocol": "https",
+									"host": [
+										"mrecode",
+										"com"
+									],
+									"path": [
+										"gpapro",
+										"api",
+										"auth",
+										"verify",
+										"send_verify.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check_verify",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "elshoram974@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "verified_code",
+											"value": "435836",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mrecode.com/gpapro/api/auth/verify/check_verify.php",
+									"protocol": "https",
+									"host": [
+										"mrecode",
+										"com"
+									],
+									"path": [
+										"gpapro",
+										"api",
+										"auth",
+										"verify",
+										"check_verify.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "41",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/auth/delete.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"auth",
+								"delete.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change_password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "elshoram974@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "seawaYS1#@",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/auth/change_password.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"auth",
+								"change_password.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "elshoram974@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/auth/login.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"auth",
+								"login.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit_name",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "elshoram974@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "MO",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "MO",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/auth/edit_name.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"auth",
+								"edit_name.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "MO",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "MO",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "elshoram974@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "elshoram974@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/auth/signup.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"auth",
+								"signup.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change_photo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "aglal4245@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/Privets/Pictures/My logo/M.R.E.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/auth/change_photo.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"auth",
+								"change_photo.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "subject",
+			"item": [
+				{
+					"name": "shared",
+					"item": [
+						{
+							"name": "get_shared",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://mrecode.com/gpapro/api/subject/shared/get_shared.php?user_sharedId=0000000000",
+									"protocol": "https",
+									"host": [
+										"mrecode",
+										"com"
+									],
+									"path": [
+										"gpapro",
+										"api",
+										"subject",
+										"shared",
+										"get_shared.php"
+									],
+									"query": [
+										{
+											"key": "user_sharedId",
+											"value": "0000000000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_many_shared",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "where",
+											"value": "\"`remote_id` = 79 OR `remote_id` = 77 \"",
+											"description": " if \"1\" can delete all from user",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mrecode.com/gpapro/api/subject/shared/delete_many_shared.php",
+									"protocol": "https",
+									"host": [
+										"mrecode",
+										"com"
+									],
+									"path": [
+										"gpapro",
+										"api",
+										"subject",
+										"shared",
+										"delete_many_shared.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "share_many_subjects",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "where",
+											"value": "\"`remote_id` = 79 OR `remote_id` = 77 \"",
+											"description": "if \"1\" will share all subjects with this user",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mrecode.com/gpapro/api/subject/shared/share_many_subjects.php",
+									"protocol": "https",
+									"host": [
+										"mrecode",
+										"com"
+									],
+									"path": [
+										"gpapro",
+										"api",
+										"subject",
+										"shared",
+										"share_many_subjects.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit_subject",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "subject_nameEn",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_nameAr",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_note",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_myMidDegree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_myYearWorkDegree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_myPracticalDegree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_myFinalDegree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_maxMidDegree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_maxYearWorkDegree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_maxPracticalDegree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_maxFinalDegree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_degree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_maxDegree",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_gpa",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_hours",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_isCalculated",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_semester",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_year",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject_id",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://mrecode.com/gpapro/api/subject/edit_subject.php",
+									"protocol": "https",
+									"host": [
+										"mrecode",
+										"com"
+									],
+									"path": [
+										"gpapro",
+										"api",
+										"subject",
+										"edit_subject.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "view_subjects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/subject/view_subjects.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"subject",
+								"view_subjects.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_many_subjects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "where_code",
+									"value": "\"`remote_id`=1245 OR `remote_id` = 1211 OR `remote_id` = 1245\"",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/subject/delete_many_subjects.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"subject",
+								"delete_many_subjects.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_many_subjects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "subject_user",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "subjects_SQLCode",
+									"value": "\"(1,'1 Subject','1 مادة',NULL,19,9,50,NULL, 20,10,60, 78,80,NULL,3,1,'summer_semester','first_year'),(1,'fifth Subject','خامس مادة',NULL,19,9,50,NULL, 20,10,60, 78,80,NULL,3,1,'summer_semester','first_year')\"",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/subject/add_many_subjects.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"subject",
+								"add_many_subjects.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change_calc_subjects",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "make_them_calculated",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "where_code",
+									"value": "\"`remote_id`=2101 OR `remote_id` = 1211 OR `remote_id` = 1245\"",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mrecode.com/gpapro/api/subject/change_calc_subjects.php",
+							"protocol": "https",
+							"host": [
+								"mrecode",
+								"com"
+							],
+							"path": [
+								"gpapro",
+								"api",
+								"subject",
+								"change_calc_subjects.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "app_info",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "appId",
+							"value": "com.mrecode.gpapro",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://mrecode.com/gpapro/api/app_info.php",
+					"protocol": "https",
+					"host": [
+						"mrecode",
+						"com"
+					],
+					"path": [
+						"gpapro",
+						"api",
+						"app_info.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
