@@ -172,17 +172,24 @@ function deleteSharedSubjects($user_id, $where, $wantEcho)
                 // search if no else shared subjects
                 $stmt = $con->prepare("SELECT * from `shared_subjects` where `subject_user` = ?");
                 $stmt->execute(array($user_id));
+                $subjects =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                $fromUser = null;
+
+
 
                 if ($stmt->rowCount() == 0) {
                     $stmt =  $con->prepare("UPDATE `users` SET `user_sharedId`= NULL WHERE `user_id` = ?");
                     $stmt->execute(array($user_id));
+                } else {
+                    $fromUser =  $subjects[0]['fromUser'];
                 }
                 // --------------------------------
 
 
 
 
-                if ($wantEcho) successStatus(array('user_id' => $user_id, 'status' => 'deleted'));
+                if ($wantEcho) successStatus(array('user_sharedId' => $fromUser, 'shared_subjects' => $subjects));
             } else {
                 if ($wantEcho) failureStatus('no subject found');
             }
