@@ -43,7 +43,7 @@ if ($firstStmt->rowCount() > 0) {
                 $stmt->execute(array($user_id));
 
                 $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                successStatus(array('user_sharedId' => $myRand, 'shared_subjects' => $subjects));
+                successStatus(array('user_sharedId' => $subjects[0]['fromUser'], 'shared_subjects' => $subjects));
             } else {
                 failureStatus('unknown error');
             }

@@ -6,11 +6,12 @@ try {
     global $user_sharedId;
 
     $user_sharedId = $_GET['user_sharedId'];
-    // $user_sharedId = filterRequest('user_sharedId');
 } catch (\Throwable $th) {
     failureStatus('error when get post');
     return;
 }
+
+if($user_sharedId == null || empty($user_sharedId)) return;
 
 try {
     $stmt = $con->prepare("SELECT * from `shared_subjects` where `fromUser` = ?");
@@ -20,7 +21,7 @@ try {
         $subjects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-        successStatus(array('user_sharedId' => $user_sharedId, 'shared_subjects' => $subjects));
+        successStatus(array('user_sharedId' => $subjects[0]['fromUser'], 'shared_subjects' => $subjects));
     } else {
         failureStatus('no subject found');
     }
