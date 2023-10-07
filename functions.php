@@ -54,8 +54,7 @@ function sendMail($to, $title, $body): void
 
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-    $headers .= "From: GPA Pro <info@mrecode.com>";
-
+    $headers .= "From: GPA PRO <info@mrecode.com>";
 
     mail($to, $title, $body, $headers);
 }
@@ -65,12 +64,12 @@ function sendCode($title, $email, $rand): void
     $to = $email;
 
     // تنسيق النص
-    $body = "<div style='text-align: start;'>
-                Your code is <span style='font-weight: bold; font-size: larger;'>$rand</span>
+    $body = "<div style='text-align: start;font-size: 16px;'>
+                Your code is <span style='font-weight: bold; font-size: 25px;vertical-align: middle;'>$rand</span>
                 <br>
-                Please use the code to $title.
+                Please use the code to <span style='font-weight: bold;font-size: 20px;vertical-align: middle;'>$title</span>.
                 <br>
-                If you're not registered in the GPA Pro App, please ignore this message.
+                If you're not registered in the <span style='font-weight: bold;font-size: 20px;vertical-align: middle;'>GPA PRO</span> App, please ignore this message.
             </div>";
 
 
@@ -78,11 +77,11 @@ function sendCode($title, $email, $rand): void
     sendMail($to, $title, $body);
 }
 
-// function getMyDate(): string
-// {
-//     date_default_timezone_set('Africa/Cairo');
-//     return date('d-m-y h:i:s', strtotime('+1 hour'));
-// }
+function getMyDate(): string
+{
+    date_default_timezone_set('Africa/Cairo');
+    return date('d-m-y h:i:s', strtotime('+1 hour'));
+}
 
 define('MB', 1048576);
 function uploadImage($request, $email, $path = 'uploaded_images/'): string|null

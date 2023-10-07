@@ -6,7 +6,7 @@ try {
     global $email;
     global $title;
     $email = filterRequest('email');
-    $title = filterRequest('title' ,true) ?? 'GPA Pro';
+    $title = filterRequest('title', true) ?? 'GPA PRO';
 } catch (\Throwable $th) {
     failureStatus('error when get post');
     return;
