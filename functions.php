@@ -1,5 +1,12 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'phpmailer/Exception.php';
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
 function getSharedSubjectByRemoteId($remote_id, $con)
 {
     $stmt =  $con->prepare("SELECT * FROM `shared_subjects` WHERE `remote_id` = ?");
@@ -50,19 +57,34 @@ function filterRequest($variable, $canBeNull = false): string | null
 
 function sendMail($to, $title, $body): void
 {
-    // تحديد أن البريد الإلكتروني يحتوي على نص HTML
 
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8" . "\r\n";
-    $headers .= "From: GPA PRO <info@mrecode.com>";
+    $mail = new PHPMailer();
 
-    mail($to, $title, $body, $headers);
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_OFF;
+    $mail->isSMTP();
+    $mail->Host       = 'mail.mrecode.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'info@mrecode.com';
+    $mail->Password   = 'seawaYS1#@';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port       = 465;
+
+    //Recipients
+    $mail->setFrom('info@mrecode.com', 'GPA PRO');
+    $mail->addAddress($to);
+
+    //Content
+    $mail->isHTML(true);
+    $mail->Subject = $title;
+    $mail->Body    = $body;
+    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
 }
 
 function sendCode($title, $email, $rand): void
 {
-    $to = $email;
-
     // تنسيق النص
     $body = "<div style='text-align: start;font-size: 16px;'>
                 Your code is <span style='font-weight: bold; font-size: 25px;vertical-align: middle;'>$rand</span>
@@ -74,7 +96,7 @@ function sendCode($title, $email, $rand): void
 
 
     // إرسال البريد الإلكتروني
-    sendMail($to, $title, $body);
+    sendMail($email, $title, $body);
 }
 
 function getMyDate(): string
